@@ -9,8 +9,8 @@ parallel.
 ![futures-travel-01](https://github.com/reselbob/JavaFuturesDemo/assets/1110569/2b49ce70-e003-4f31-b9cb-8007816da47a)
 
 
-The second use case a commerce scenario that runs futures sequentially and gets an order and then pays for the order, 
-ships the 
+The second use case is a commerce scenario that runs futures sequentially and gets an order and then pays for the 
+order, ships the 
 order, 
 delivers 
 the 
