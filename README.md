@@ -3,19 +3,21 @@ A project that demonstrates how to use Java Futures
 
 # Use cases
 
-There are two use cases. The first is a travel use case that runs Hotel, Airline and Car Rental in parallel.
+There are two use cases. The first is a travel use case that runs Hotel, Airline and Car Rental reservations in 
+parallel.
 
 ![futures-travel-01](https://github.com/reselbob/JavaFuturesDemo/assets/1110569/2b49ce70-e003-4f31-b9cb-8007816da47a)
 
 
-The second use case a commerce the gets an order and then pays for the order, ships the order, delivers the order and then finally confirms the order.
+The second use case a commerce scenario the gets an order and then pays for the order, ships the order, delivers the 
+order and then finally confirms the order.
 
 ![futures-commerce-01](https://github.com/reselbob/JavaFuturesDemo/assets/1110569/fe74af89-2319-46c5-9d82-419e2fd9d28e)
 
 
 # Getting the code up and running
 
-The is Java code that runs in the Maven framework.
+The project is Java code that runs in the Maven framework.
 
 **Step 1:**  Confirm Java is installed.
 
@@ -23,7 +25,7 @@ The is Java code that runs in the Maven framework.
 java -version
 ```
 
-You'll get output similar to the following. If not, intall the Java SDK
+You'll get output similar to the following. If not, [install the Java SDK](https://openjdk.org/install/).
 
 ```text
 openjdk version "21" 2023-09-19
@@ -40,7 +42,7 @@ OpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)
 mvn --version
 ```
 
-You'll get output similar to the following. If not, intall Maven
+You'll get output similar to the following. If not, [install Maven](https://maven.apache.org/install.html).
 
 ```
 Maven home: /usr/share/maven
@@ -69,6 +71,9 @@ mvn exec:java -Dexec.mainClass="futuresdemo.TravelProgram"
 You'll get output similar to the following:
 
 ```text
+.
+.
+.
 Start time: 2024-02-16 11:52:26
 Booking hotel, airline, and car rental reservations in parallel using CompletableFuture.
 
@@ -106,6 +111,9 @@ mvn exec:java -Dexec.mainClass="futuresdemo.CommerceProgram"
 You'll get output similar to the following:
 
 ```text
+.
+.
+.
 Start time: 2024-02-16 11:58:57
 Running a business process
 
