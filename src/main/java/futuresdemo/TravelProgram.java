@@ -21,7 +21,7 @@ public class TravelProgram {
     System.out.println("Start time: " + DateConverter.convertToHumanReadableTime(startTime));
 
     System.out.println(
-        "Booking hotel, airline, and car rental efforts in parallel using CompletableFuture in any order\n");
+        "Booking hotel, airline, and car rental reservations in parallel using CompletableFuture.\n");
 
     CompletableFuture<Confirmation> hotelFuture =
         CompletableFuture.supplyAsync(() -> new Hotel(10).book(), executor);

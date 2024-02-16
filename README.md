@@ -20,7 +20,7 @@ The is Java code that runs in the Maven framework.
 **Step 1:**  Confirm Java is installed.
 
 ```bash
-java -verson
+java -version
 ```
 
 You'll get output similar to the following. If not, intall the Java SDK

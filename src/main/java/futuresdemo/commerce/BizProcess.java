@@ -6,7 +6,7 @@ public class BizProcess {
 
   public static Order getOrder() {
     try {
-      Thread.sleep(500);
+      Thread.sleep(1000);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
@@ -15,7 +15,7 @@ public class BizProcess {
 
   public static Order payOrder(Order order) {
     try {
-      Thread.sleep(1000);
+      Thread.sleep(2000);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
@@ -25,7 +25,7 @@ public class BizProcess {
 
   public static Order shipOrder(Order order) {
     try {
-      Thread.sleep(2000);
+      Thread.sleep(3000);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
@@ -35,7 +35,7 @@ public class BizProcess {
 
   public static Order deliverOrder(Order order) {
     try {
-      Thread.sleep(3000);
+      Thread.sleep(4000);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
@@ -45,7 +45,7 @@ public class BizProcess {
 
   public static Order confirmOrder(Order order) {
     try {
-      Thread.sleep(4000);
+      Thread.sleep(5000);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
