@@ -7,10 +7,10 @@ import futuresdemo.trip.Result;
 import futuresdemo.utils.DateConverter;
 import java.util.concurrent.*;
 
-public class EfficientProgram {
+public class UnorderedProgram {
   public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-    ExecutorService executorService = Executors.newFixedThreadPool(3);
+    ExecutorService executor = Executors.newFixedThreadPool(3);
 
     // Take a timestamp before the try statement is executed
     long startTime = System.currentTimeMillis();
@@ -19,16 +19,16 @@ public class EfficientProgram {
     System.out.println("Start time: " + DateConverter.convertToHumanReadableTime(startTime));
 
     System.out.println(
-        "Booking hotel, airline, and car rental efforts in parallel using CompletableFuture");
+        "Booking hotel, airline, and car rental efforts in parallel using CompletableFuture in any order\n");
 
     CompletableFuture<Result> hotelFuture =
-        CompletableFuture.supplyAsync(() -> new Hotel(10).book());
+        CompletableFuture.supplyAsync(() -> new Hotel(10).book(),executor);
     CompletableFuture<Result> airlineFuture =
-        CompletableFuture.supplyAsync(() -> new Airline(2).book());
+        CompletableFuture.supplyAsync(() -> new Airline(2).book(),executor);
     CompletableFuture<Result> carRentalFuture =
-        CompletableFuture.supplyAsync(() -> new CarRental(5).book());
+        CompletableFuture.supplyAsync(() -> new CarRental(5).book(),executor);
 
-    Result result = hotelFuture.get();
+    //Result result = hotelFuture.get();
 
     // run all the futures using allOf
     Void combinedFuture =
@@ -43,6 +43,6 @@ public class EfficientProgram {
     System.out.println("Total time: " + (endTime - startTime) / 1000 + " seconds");
 
     // Shut down the executorService
-    executorService.shutdown();
+    executor.shutdown();
   }
 }
