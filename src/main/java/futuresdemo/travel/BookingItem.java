@@ -1,4 +1,4 @@
-package futuresdemo.trip;
+package futuresdemo.travel;
 
 import futuresdemo.utils.DateConverter;
 
@@ -7,12 +7,14 @@ public abstract class BookingItem implements Bookable {
 
   public abstract String getClassName();
 
+  public abstract BusinessType getBusinessType();
+
   public BookingItem(long waitTimeInSeconds) {
     this.waitTime = waitTimeInSeconds;
   }
 
   @Override
-  public Result book() {
+  public Confirmation book() {
     // Print  a timestamp in seconds
     long startTime = System.currentTimeMillis();
 
@@ -37,6 +39,6 @@ public abstract class BookingItem implements Bookable {
             + (endTime - startTime) / 1000
             + " seconds.");
 
-    return new ResultImpl(getClassName() + " booking completed");
+    return new ConfirmationImpl(getClassName() + " booking completed", getBusinessType());
   }
 }

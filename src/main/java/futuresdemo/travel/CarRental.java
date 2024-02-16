@@ -1,4 +1,4 @@
-package futuresdemo.trip;
+package futuresdemo.travel;
 
 public class CarRental extends BookingItem {
   public CarRental(long waitTimeInSeconds) {
@@ -8,5 +8,9 @@ public class CarRental extends BookingItem {
   @Override
   public String getClassName() {
     return this.getClass().getSimpleName();
+  }
+
+  public BusinessType getBusinessType() {
+    return BusinessType.CAR_RENTAL;
   }
 }
