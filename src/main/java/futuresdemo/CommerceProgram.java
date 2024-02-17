@@ -18,7 +18,7 @@ public class CommerceProgram {
               System.out.println(str);
               return order;
             })
-        .thenApply(order -> BizProcess.payOrder(order))
+        .thenApplyAsync(BizProcess::payOrder, executor)
         .thenApply(
             order -> {
               String stamp = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
@@ -27,7 +27,7 @@ public class CommerceProgram {
               System.out.println(str);
               return order;
             })
-        .thenApply(order -> BizProcess.shipOrder(order))
+        .thenApplyAsync(BizProcess::shipOrder, executor)
         .thenApply(
             order -> {
               String stamp = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
@@ -36,7 +36,7 @@ public class CommerceProgram {
               System.out.println(str);
               return order;
             })
-        .thenApply(order -> BizProcess.deliverOrder(order))
+        .thenApplyAsync(BizProcess::deliverOrder, executor)
         .thenApply(
             order -> {
               String stamp = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
@@ -45,7 +45,7 @@ public class CommerceProgram {
               System.out.println(str);
               return order;
             })
-        .thenApply(order -> BizProcess.confirmOrder(order))
+        .thenApplyAsync(BizProcess::confirmOrder, executor)
         .thenApply(
             order -> {
               String stamp = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
