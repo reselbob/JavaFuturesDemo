@@ -105,7 +105,7 @@ Total time: 10 seconds
 Execute the following code in a terminal window to run the Commerce use case code:
 
 ```bash
-mvn exec:java -Dexec.mainClass="futuresdemo.CommerceProgram"
+mvn exec:java -Dexec.mainClass="futuresdemo.ChainedCommerceProgram"
 ```
 
 You'll get output similar to the following:

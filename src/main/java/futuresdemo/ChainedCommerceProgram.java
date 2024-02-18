@@ -4,7 +4,7 @@ import futuresdemo.commerce.BizProcess;
 import futuresdemo.utils.DateConverter;
 import java.util.concurrent.*;
 
-public class CommerceProgram {
+public class ChainedCommerceProgram {
   public static void main(String[] args) throws ExecutionException, InterruptedException {
     long startTime = System.currentTimeMillis();
     System.out.println("Start time: " + DateConverter.convertToHumanReadableTime(startTime));
