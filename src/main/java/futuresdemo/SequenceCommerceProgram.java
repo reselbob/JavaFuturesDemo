@@ -1,9 +1,12 @@
 package futuresdemo;
 
 import futuresdemo.commerce.*;
-import futuresdemo.commerce.Confirmation;
 import futuresdemo.utils.DateConverter;
-import java.util.concurrent.*;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SequenceCommerceProgram {
   public static void main(String[] args) throws ExecutionException, InterruptedException {
