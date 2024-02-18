@@ -3,9 +3,9 @@ package futuresdemo.travel;
 import java.util.UUID;
 
 public interface Confirmation {
-  public String getMessage();
+  String getMessage();
 
-  public String getBusinessType();
+  String getBusinessType();
 
-  public UUID getId();
+  UUID getId();
 }

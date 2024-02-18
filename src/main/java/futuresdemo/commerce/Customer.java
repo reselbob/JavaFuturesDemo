@@ -3,11 +3,11 @@ package futuresdemo.commerce;
 import java.util.UUID;
 
 public class Customer {
-  private UUID id = UUID.randomUUID();
-  private String firstName;
-  private String lastName;
-  private String email;
-  private String phone;
+  private final UUID id = UUID.randomUUID();
+  private final String firstName;
+  private final String lastName;
+  private final String email;
+  private final String phone;
 
   public Customer(String firstName, String lastName, String email, String phone) {
     this.firstName = firstName;

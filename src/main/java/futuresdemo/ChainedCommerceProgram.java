@@ -1,24 +1,29 @@
 package futuresdemo;
 
-import futuresdemo.commerce.BizProcess;
+import futuresdemo.commerce.*;
 import futuresdemo.utils.DateConverter;
 import java.util.concurrent.*;
 
 public class ChainedCommerceProgram {
-  public static void main(String[] args) throws ExecutionException, InterruptedException {
+  public static void main(String[] args) {
     long startTime = System.currentTimeMillis();
     System.out.println("Start time: " + DateConverter.convertToHumanReadableTime(startTime));
-    System.out.println("Running a business process\n");
-    ExecutorService executor = Executors.newFixedThreadPool(3);
+    System.out.println("Running a chained business process\n");
+    ExecutorService executor = Executors.newFixedThreadPool(7);
+    Dispatcher dispatcher = new Dispatcher();
+    Payment payment = new Payment();
+    Shipper shipper = new Shipper();
+    Delivery delivery = new Delivery();
+    Confirmation confirmation = new Confirmation();
 
-    CompletableFuture.supplyAsync(BizProcess::getOrder, executor)
+    CompletableFuture.supplyAsync(dispatcher::getOrder, executor)
         .thenApply(
             order -> {
               String str = String.format("Order: %s is %s", order.getId(), order.getStatus());
               System.out.println(str);
               return order;
             })
-        .thenApplyAsync(BizProcess::payOrder, executor)
+        .thenApplyAsync(payment::pay, executor)
         .thenApply(
             order -> {
               String stamp = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
@@ -27,7 +32,7 @@ public class ChainedCommerceProgram {
               System.out.println(str);
               return order;
             })
-        .thenApplyAsync(BizProcess::shipOrder, executor)
+        .thenApplyAsync(shipper::ship, executor)
         .thenApply(
             order -> {
               String stamp = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
@@ -36,7 +41,7 @@ public class ChainedCommerceProgram {
               System.out.println(str);
               return order;
             })
-        .thenApplyAsync(BizProcess::deliverOrder, executor)
+        .thenApplyAsync(delivery::deliver, executor)
         .thenApply(
             order -> {
               String stamp = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
@@ -45,7 +50,7 @@ public class ChainedCommerceProgram {
               System.out.println(str);
               return order;
             })
-        .thenApplyAsync(BizProcess::confirmOrder, executor)
+        .thenApplyAsync(confirmation::confirm, executor)
         .thenApply(
             order -> {
               String stamp = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());

@@ -4,14 +4,14 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 public class Order {
-  private UUID id;
+  private final UUID id;
   private final Customer customer;
-  private String name;
-  private int quantity;
+  private final String name;
+  private final int quantity;
 
   private OrderStatus status;
 
-  private BigDecimal price;
+  private final BigDecimal price;
 
   public Order(Customer customer, String name, int quantity, BigDecimal price) {
     this.id = UUID.randomUUID();
