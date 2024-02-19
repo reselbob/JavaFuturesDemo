@@ -1,6 +1,8 @@
 package futuresdemo.commerce;
 
-public class Confirmation {
+import futuresdemo.utils.DateConverter;
+
+public class Confirmation extends AbstractCommerceActivity {
   public Order confirm(Order order) {
     int sleepTime = 1000;
     try {
@@ -9,8 +11,12 @@ public class Confirmation {
       e.printStackTrace();
     }
     order.setStatus(OrderStatus.CONFIRMED);
+
+    String endTime = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
     String str =
-        String.format("Confirmation: Order %s, took %d seconds", order.getId(), sleepTime / 1000);
+        String.format(
+            "Shipped: Order %s, ended at %s and took %d seconds",
+            order.getId(), endTime, sleepTime / 1000);
     System.out.println(str);
     return order;
   }

@@ -2,16 +2,14 @@ package futuresdemo.travel;
 
 import futuresdemo.utils.DateConverter;
 
-public abstract class BookingItem implements Bookable {
+public abstract class AbstractBookingItem implements Bookable {
   private final long waitTime;
 
-  public abstract String getClassName();
+  protected AbstractBookingItem(long waitTime) {
+    this.waitTime = waitTime;
+  }
 
   public abstract BusinessType getBusinessType();
-
-  public BookingItem(long waitTimeInSeconds) {
-    this.waitTime = waitTimeInSeconds;
-  }
 
   @Override
   public Confirmation book() {
@@ -19,7 +17,7 @@ public abstract class BookingItem implements Bookable {
     long startTime = System.currentTimeMillis();
 
     System.out.println(
-        getClassName()
+        this.getClassName()
             + " booking started at: "
             + DateConverter.convertToHumanReadableTime(startTime));
 
@@ -40,5 +38,9 @@ public abstract class BookingItem implements Bookable {
             + " seconds.");
 
     return new ConfirmationImpl(getClassName() + " booking completed", getBusinessType());
+  }
+
+  public String getClassName() {
+    return this.getClass().getSimpleName();
   }
 }

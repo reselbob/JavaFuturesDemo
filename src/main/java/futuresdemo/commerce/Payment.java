@@ -1,6 +1,8 @@
 package futuresdemo.commerce;
 
-public class Payment {
+import futuresdemo.utils.DateConverter;
+
+public class Payment extends AbstractCommerceActivity {
   public Order pay(Order order) {
     int sleepTime = 2000;
     try {
@@ -9,8 +11,12 @@ public class Payment {
       e.printStackTrace();
     }
     order.setStatus(OrderStatus.PAID);
+
+    String endTime = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
     String str =
-        String.format("Payment: Order %s, took %d seconds", order.getId(), sleepTime / 1000);
+        String.format(
+            "Shipped: Order %s, ended at %s and took %d seconds",
+            order.getId(), endTime, sleepTime / 1000);
     System.out.println(str);
     return order;
   }

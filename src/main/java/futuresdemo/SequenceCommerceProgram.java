@@ -2,7 +2,6 @@ package futuresdemo;
 
 import futuresdemo.commerce.*;
 import futuresdemo.utils.DateConverter;
-
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -13,7 +12,7 @@ public class SequenceCommerceProgram {
     long startTime = System.currentTimeMillis();
     System.out.println("Start time: " + DateConverter.convertToHumanReadableTime(startTime));
     System.out.println("Running a sequential business process\n");
-    ExecutorService executor = Executors.newFixedThreadPool(7);
+    ExecutorService executor = Executors.newFixedThreadPool(5);
 
     CompletableFuture<Order> orderFuture =
         CompletableFuture.supplyAsync(() -> new Dispatcher().getOrder(), executor);

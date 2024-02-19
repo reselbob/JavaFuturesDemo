@@ -9,21 +9,16 @@ public class ChainedCommerceProgram {
     long startTime = System.currentTimeMillis();
     System.out.println("Start time: " + DateConverter.convertToHumanReadableTime(startTime));
     System.out.println("Running a chained business process\n");
-    ExecutorService executor = Executors.newFixedThreadPool(7);
-    Dispatcher dispatcher = new Dispatcher();
-    Payment payment = new Payment();
-    Shipper shipper = new Shipper();
-    Delivery delivery = new Delivery();
-    Confirmation confirmation = new Confirmation();
+    ExecutorService executor = Executors.newFixedThreadPool(5);
 
-    CompletableFuture.supplyAsync(dispatcher::getOrder, executor)
+    CompletableFuture.supplyAsync(() -> new Dispatcher().getOrder(), executor)
         .thenApply(
             order -> {
               String str = String.format("Order: %s is %s", order.getId(), order.getStatus());
               System.out.println(str);
               return order;
             })
-        .thenApplyAsync(payment::pay, executor)
+        .thenApplyAsync(order -> new Payment().pay(order), executor)
         .thenApply(
             order -> {
               String stamp = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
@@ -32,7 +27,7 @@ public class ChainedCommerceProgram {
               System.out.println(str);
               return order;
             })
-        .thenApplyAsync(shipper::ship, executor)
+        .thenApplyAsync(order -> new Shipper().ship(order), executor)
         .thenApply(
             order -> {
               String stamp = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
@@ -41,7 +36,7 @@ public class ChainedCommerceProgram {
               System.out.println(str);
               return order;
             })
-        .thenApplyAsync(delivery::deliver, executor)
+        .thenApplyAsync(order -> new Delivery().deliver(order), executor)
         .thenApply(
             order -> {
               String stamp = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
@@ -50,7 +45,7 @@ public class ChainedCommerceProgram {
               System.out.println(str);
               return order;
             })
-        .thenApplyAsync(confirmation::confirm, executor)
+        .thenApplyAsync(order -> new Confirmation().confirm(order), executor)
         .thenApply(
             order -> {
               String stamp = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());

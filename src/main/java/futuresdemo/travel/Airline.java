@@ -1,13 +1,8 @@
 package futuresdemo.travel;
 
-public class Airline extends BookingItem {
+public class Airline extends AbstractBookingItem {
   public Airline(long waitTimeInSeconds) {
     super(waitTimeInSeconds);
-  }
-
-  @Override
-  public String getClassName() {
-    return this.getClass().getSimpleName();
   }
 
   @Override

@@ -1,13 +1,8 @@
 package futuresdemo.travel;
 
-public class CarRental extends BookingItem {
+public class CarRental extends AbstractBookingItem {
   public CarRental(long waitTimeInSeconds) {
     super(waitTimeInSeconds);
-  }
-
-  @Override
-  public String getClassName() {
-    return this.getClass().getSimpleName();
   }
 
   public BusinessType getBusinessType() {

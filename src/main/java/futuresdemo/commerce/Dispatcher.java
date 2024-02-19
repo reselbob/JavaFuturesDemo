@@ -1,8 +1,9 @@
 package futuresdemo.commerce;
 
+import futuresdemo.utils.DateConverter;
 import futuresdemo.utils.Mocks;
 
-public class Dispatcher {
+public class Dispatcher extends AbstractCommerceActivity {
   public Order getOrder() {
     int sleepTime = 1000;
     try {
@@ -12,8 +13,12 @@ public class Dispatcher {
     }
 
     Order order = Mocks.getRandomOrder();
+
+    String endTime = DateConverter.convertToHumanReadableTime(System.currentTimeMillis());
     String str =
-        String.format("Dispatched: Order %s, took %d seconds", order.getId(), sleepTime / 1000);
+        String.format(
+            "Shipped: Order %s, ended at %s and took %d seconds",
+            order.getId(), endTime, sleepTime / 1000);
     System.out.println(str);
     return order;
   }
