@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-public class TravelProgram {
+public class ParallelTravelProgram {
   public static void main(String[] args) throws ExecutionException, InterruptedException {
 
     ExecutorService executor = Executors.newFixedThreadPool(3);
