@@ -54,13 +54,12 @@ public class ChainedCommerceProgram {
               System.out.println(str);
               return order;
             })
-        .thenApply(
-            order -> {
+        .thenAccept(
+            (order) -> {
               long endTime = System.currentTimeMillis();
               System.out.println("End time: " + DateConverter.convertToHumanReadableTime(endTime));
               System.out.println("Total time: " + (endTime - startTime) / 1000 + " seconds");
               executor.shutdown();
-              return order;
             });
   }
 }
