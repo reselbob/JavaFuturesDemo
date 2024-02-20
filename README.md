@@ -79,38 +79,73 @@ mvn exec:java -Dexec.mainClass="futuresdemo.TravelProgram"
 You'll get output similar to the following:
 
 ```text
-.
-.
-.
-Start time: 2024-02-16 11:52:26
+Start time: 2024-02-19 16:56:45
 Booking hotel, airline, and car rental reservations in parallel using CompletableFuture.
 
-Airline booking started at: 2024-02-16 11:52:26
-Hotel booking started at: 2024-02-16 11:52:26
-CarRental booking started at: 2024-02-16 11:52:26
-Airline booking ended at: 2024-02-16 11:52:28 and took 2 seconds.
-CarRental booking ended at: 2024-02-16 11:52:31 and took 5 seconds.
-Hotel booking ended at: 2024-02-16 11:52:36 and took 10 seconds.
+Airline booking started at: 2024-02-19 16:56:45
+Hotel booking started at: 2024-02-19 16:56:45
+CarRental booking started at: 2024-02-19 16:56:45
+Airline booking ended at: 2024-02-19 16:56:47 and took 2 seconds.
+CarRental booking ended at: 2024-02-19 16:56:50 and took 5 seconds.
+Hotel booking ended at: 2024-02-19 16:56:55 and took 10 seconds.
 
 Confirmations:
 
-Confirmation id: 6cbe60a7-1897-454a-9573-27c0dc146519 message: Hotel booking completed business type: hotel
-Confirmation id: cf0bba9f-b944-428e-93ec-1208819b7570 message: Airline booking completed business type: airline
-Confirmation id: d9541bae-89ca-423f-bd7b-7e58d6490977 message: CarRental booking completed business type: car rental
-End time: 2024-02-16 11:52:36
+Confirmation id: 407e624c-bca5-498d-84a8-b3a611b78951 message: Hotel booking completed business type: hotel
+Confirmation id: b94b3606-a009-41b9-8ca5-43f4e6cb019c message: Airline booking completed business type: airline
+Confirmation id: 7ccd20cb-ba9f-4e6e-903f-686522c974a7 message: CarRental booking completed business type: car rental
+End time: 2024-02-19 16:56:55
 Total time: 10 seconds
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  10.252 s
-[INFO] Finished at: 2024-02-16T11:52:36-08:00
+[INFO] Total time:  10.277 s
+[INFO] Finished at: 2024-02-19T16:56:55-08:00
 [INFO] ------------------------------------------------------------------------
-
 ```
 
-## Running the Sequential Futures use case:
+## Running the Sequential CompletableFutures use case:
 
 Execute the following code in a terminal window to run the Commerce use case code:
+
+```bash
+mvn exec:java -Dexec.mainClass="futuresdemo.SequenceCommerceProgram"
+```
+
+You'll get output similar to the following:
+
+```text
+Start time: 2024-02-19 16:55:41
+Running a sequential business process
+
+Dispatcher started at 2024-02-19 16:55:41
+Shipped: Order 7db49d8c-badc-4663-99d1-dcc7c2ef2bf5, ended at 2024-02-19 16:55:42 and took 1 seconds
+Order: 7db49d8c-badc-4663-99d1-dcc7c2ef2bf5 is pending
+Payment started at 2024-02-19 16:55:42
+Shipped: Order 7db49d8c-badc-4663-99d1-dcc7c2ef2bf5, ended at 2024-02-19 16:55:44 and took 2 seconds
+Order: 7db49d8c-badc-4663-99d1-dcc7c2ef2bf5 is paid
+Shipper started at 2024-02-19 16:55:44
+Shipped: Order 7db49d8c-badc-4663-99d1-dcc7c2ef2bf5, ended at 2024-02-19 16:55:47 and took 3 seconds
+Order: 7db49d8c-badc-4663-99d1-dcc7c2ef2bf5 is shipped
+Delivery started at 2024-02-19 16:55:47
+Shipped: Order 7db49d8c-badc-4663-99d1-dcc7c2ef2bf5, ended at 2024-02-19 16:55:57 and took 10 seconds
+Order: 7db49d8c-badc-4663-99d1-dcc7c2ef2bf5 is delivered
+Confirmation started at 2024-02-19 16:55:57
+Shipped: Order 7db49d8c-badc-4663-99d1-dcc7c2ef2bf5, ended at 2024-02-19 16:55:58 and took 1 seconds
+Order: 7db49d8c-badc-4663-99d1-dcc7c2ef2bf5 is confirmed
+End time: 2024-02-19 16:55:58
+Total time: 17 seconds
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.389 s
+[INFO] Finished at: 2024-02-19T16:55:58-08:00
+[INFO] ------------------------------------------------------------------------
+```
+
+## Running the Chained Sequential CompletableFutures use case:
+
+Execute the following code in a terminal window to run the Chained Commerce use case code:
 
 ```bash
 mvn exec:java -Dexec.mainClass="futuresdemo.ChainedCommerceProgram"
@@ -119,23 +154,30 @@ mvn exec:java -Dexec.mainClass="futuresdemo.ChainedCommerceProgram"
 You'll get output similar to the following:
 
 ```text
-.
-.
-.
-Start time: 2024-02-16 11:58:57
-Running a business process
+Start time: 2024-02-19 16:54:48
+Running a chained business process
 
-Order: 6f5f7f7c-e5f2-4704-82dc-07fb5a2a13b0 is pending
-Order: 6f5f7f7c-e5f2-4704-82dc-07fb5a2a13b0 is paid at 2024-02-16 11:59:00
-Order: 6f5f7f7c-e5f2-4704-82dc-07fb5a2a13b0 is shipped at 2024-02-16 11:59:03
-Order: 6f5f7f7c-e5f2-4704-82dc-07fb5a2a13b0 is delivered at 2024-02-16 11:59:07
-Order: 6f5f7f7c-e5f2-4704-82dc-07fb5a2a13b0 is confirmed at 2024-02-16 11:59:12
-End time: 2024-02-16 11:59:12
-Total time: 15 seconds
+Dispatcher started at 2024-02-19 16:54:48
+Shipped: Order 6033774c-d34b-42e3-9575-3cf597dbfc9b, ended at 2024-02-19 16:54:49 and took 1 seconds
+Order: 6033774c-d34b-42e3-9575-3cf597dbfc9b is pending
+Payment started at 2024-02-19 16:54:49
+Shipped: Order 6033774c-d34b-42e3-9575-3cf597dbfc9b, ended at 2024-02-19 16:54:51 and took 2 seconds
+Order: 6033774c-d34b-42e3-9575-3cf597dbfc9b is paid at 2024-02-19 16:54:51
+Shipper started at 2024-02-19 16:54:51
+Shipped: Order 6033774c-d34b-42e3-9575-3cf597dbfc9b, ended at 2024-02-19 16:54:54 and took 3 seconds
+Order: 6033774c-d34b-42e3-9575-3cf597dbfc9b is shipped at 2024-02-19 16:54:54
+Delivery started at 2024-02-19 16:54:54
+Shipped: Order 6033774c-d34b-42e3-9575-3cf597dbfc9b, ended at 2024-02-19 16:55:04 and took 10 seconds
+Order: 6033774c-d34b-42e3-9575-3cf597dbfc9b is delivered at 2024-02-19 16:55:05
+Confirmation started at 2024-02-19 16:55:05
+Shipped: Order 6033774c-d34b-42e3-9575-3cf597dbfc9b, ended at 2024-02-19 16:55:06 and took 1 seconds
+Order: 6033774c-d34b-42e3-9575-3cf597dbfc9b is confirmed at 2024-02-19 16:55:06
+End time: 2024-02-19 16:55:06
+Total time: 17 seconds
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  15.376 s
-[INFO] Finished at: 2024-02-16T11:59:12-08:00
+[INFO] Total time:  17.495 s
+[INFO] Finished at: 2024-02-19T16:55:06-08:00
 [INFO] ------------------------------------------------------------------------
 ```
