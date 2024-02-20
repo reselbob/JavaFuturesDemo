@@ -6,17 +6,18 @@ A project that demonstrates how to use Java Futures
 There are two use cases. The first is a travel use case that runs Hotel, Airline and Car Rental reservations in 
 parallel.
 
-![travel-sequence-01](https://github.com/reselbob/JavaFuturesDemo/assets/1110569/fdd27514-7737-45fb-8959-83c9028610ec)
+![travel-sequence-01](https://github.com/reselbob/JavaFuturesDemo/assets/1110569/a5d4c8f0-7ed2-4a5d-9491-e68dc30a043c)
+
 
 
 The second use case is a commerce scenario that runs futures in two sequential styles. The first style is to run the activities in the use case as a sequence of blocking `CompletableFuture<T>`s.
 
-![sequence-commerce-02](https://github.com/reselbob/JavaFuturesDemo/assets/1110569/dd5a4a53-df45-418e-9f9f-15861514776b)
+![sequence-commerce-01](https://github.com/reselbob/JavaFuturesDemo/assets/1110569/f5b698a4-8454-4dc0-862e-97d1cf5f4d7d)
 
 
 The second style runs the activites a a chain of blocking `CompletableFuture<T>`s.
 
-![chained-commerce-01](https://github.com/reselbob/JavaFuturesDemo/assets/1110569/8f8b7765-f9a1-42e0-b2de-36ee6b8766af)
+![chained-commerce-01](https://github.com/reselbob/JavaFuturesDemo/assets/1110569/16f8726a-6eaa-44a5-8d3a-54c10e71469f)
 
 
 In both styles, the sequence of futures gets an order and then pays for the order, ships the order, delivers the order and then finally confirms the order.
