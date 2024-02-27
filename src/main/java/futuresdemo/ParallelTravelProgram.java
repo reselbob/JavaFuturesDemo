@@ -30,7 +30,6 @@ public class ParallelTravelProgram {
     CompletableFuture<Confirmation> carRentalFuture =
         CompletableFuture.supplyAsync(() -> new CarRental(5).book(), executor);
 
-
     CompletableFuture.allOf(hotelFuture, airlineFuture, carRentalFuture);
 
     List<Confirmation> confirmations = new ArrayList<>();
